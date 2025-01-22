@@ -62,6 +62,96 @@ const routes: Routes = [
 		children: [
 			/* user */
 			{
+				path: 'bodytarget',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Bodytarget'
+					}
+				},
+				loadChildren: () => import('./modules/bodytarget/pages/bodytarget/bodytarget.module').then(m => m.BodytargetModule)
+			}, 
+			{
+				path: 'bodystress',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Bodystress'
+					}
+				},
+				loadChildren: () => import('./modules/bodystress/pages/bodystress/bodystress.module').then(m => m.BodystressModule)
+			}, 
+			{
+				path: 'bodyweight',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Bodyweight'
+					}
+				},
+				loadChildren: () => import('./modules/bodyweight/pages/bodyweight/bodyweight.module').then(m => m.BodyweightModule)
+			}, 
+			{
+				path: 'bodyfood',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Bodyfood'
+					}
+				},
+				loadChildren: () => import('./modules/bodyfood/pages/bodyfood/bodyfood.module').then(m => m.BodyfoodModule)
+			}, 
+			{
+				path: 'bodyexercise',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Bodyexercise'
+					}
+				},
+				loadChildren: () => import('./modules/bodyexercise/pages/bodyexercise/bodyexercise.module').then(m => m.BodyexerciseModule)
+			}, 
+			{
+				path: 'bodyhabit',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Bodyhabit'
+					}
+				},
+				loadChildren: () => import('./modules/bodyhabit/pages/bodyhabit/bodyhabit.module').then(m => m.BodyhabitModule)
+			}, 
+			{
+				path: 'bodymood',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'bodymood'
+					}
+				},
+				loadChildren: () => import('./modules/bodymood/pages/bodymood/bodymood.module').then(m => m.BodymoodModule)
+			}, 
+			{
+				path: 'bodysleep',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'bodysleep'
+					}
+				},
+				loadChildren: () => import('./modules/bodysleep/pages/bodysleep/bodysleep.module').then(m => m.BodysleepModule)
+			}, 
+			{
+				path: 'body',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Body'
+					}
+				},
+				loadChildren: () => import('./modules/body/pages/body/body.module').then(m => m.BodyModule)
+			}, 
+			{
 				path: 'profile',
 				canActivate: [MetaGuard],
 				data: {
