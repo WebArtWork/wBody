@@ -14,6 +14,9 @@ import { AuthenticatedGuard } from './core/guards/authenticated.guard';
 import { GuestGuard } from './core/guards/guest.guard';
 import { AdminsGuard } from './core/guards/admins.guard';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { CreateBodyComponent } from './pages/user/create-body/create-body.component';
+import { BodyProfileComponent } from './pages/user/body-profile/body-profile.component';
+import { AdminPagesComponent } from './pages/user/admin-pages/admin-pages.component';
 
 const routes: Routes = [
 	{
@@ -61,36 +64,6 @@ const routes: Routes = [
 		component: UserComponent,
 		children: [
 			/* user */
-			{
-				path: 'pages',
-				canActivate: [MetaGuard],
-				data: {
-					meta: {
-						title: 'Pages'
-					}
-				},
-				loadChildren: () => import('./pages/user/admin/pages/pages.module').then(m => m.PagesModule)
-			}, 
-			{
-				path: 'profile',
-				canActivate: [MetaGuard],
-				data: {
-					meta: {
-						title: 'Profile'
-					}
-				},
-				loadChildren: () => import('./pages/user/body/profile/profile.module').then(m => m.ProfileModule)
-			}, 
-			{
-				path: 'body',
-				canActivate: [MetaGuard],
-				data: {
-					meta: {
-						title: 'Body'
-					}
-				},
-				loadChildren: () => import('./pages/user/create/body/body.module').then(m => m.BodyModule)
-			}, 
 			{
 				path: 'bodytarget',
 				canActivate: [MetaGuard],
@@ -251,7 +224,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	declarations: [AppComponent, GuestComponent, UserComponent],
+	declarations: [AppComponent, GuestComponent, UserComponent, CreateBodyComponent, BodyProfileComponent, AdminPagesComponent],
 	imports: [
 		CoreModule,
 		BrowserModule,
