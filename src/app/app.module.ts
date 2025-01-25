@@ -62,6 +62,36 @@ const routes: Routes = [
 		children: [
 			/* user */
 			{
+				path: 'pages',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Pages'
+					}
+				},
+				loadChildren: () => import('./pages/user/admin/pages/pages.module').then(m => m.PagesModule)
+			}, 
+			{
+				path: 'profile',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Profile'
+					}
+				},
+				loadChildren: () => import('./pages/user/body/profile/profile.module').then(m => m.ProfileModule)
+			}, 
+			{
+				path: 'body',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Body'
+					}
+				},
+				loadChildren: () => import('./pages/user/create/body/body.module').then(m => m.BodyModule)
+			}, 
+			{
 				path: 'bodytarget',
 				canActivate: [MetaGuard],
 				data: {
