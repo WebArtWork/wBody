@@ -1,6 +1,14 @@
 import { CrudDocument } from 'wacom';
 
 export interface Body extends CrudDocument {
-	name: string;
+	exercise: string;
+	food: string;
+	habit: string;
+	mood: string;
+	sleep: string;
+	stress: string;
+	target: string;
+	weight: string;
+	body: string;
 	description: string;
 }

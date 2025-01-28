@@ -7,7 +7,13 @@ const routes: Routes = [
 	{
 		path: '',
 		component: BodyweightComponent
+	},
+	{
+		path: ':body_id',
+		component: BodyweightComponent
 	}
+	
+	
 ];
 
 @NgModule({

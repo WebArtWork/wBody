@@ -70,6 +70,54 @@ export class BodyComponent {
 		},
 		buttons: [
 			{
+				icon: 'fitness_center',
+				hrefFunc: (doc: Body): string => {
+					return '/bodyexercise/' + doc._id;
+				},
+			},
+			{
+				icon: 'fastfood',
+				hrefFunc: (doc: Body): string => {
+					return '/bodyfood/' + doc._id;
+				},
+			},
+			{
+				icon: 'calendar_today',
+				hrefFunc: (doc: Body): string => {
+					return '/bodyhabit/' + doc._id;
+				},
+			},
+			{
+				icon: 'mood',
+				hrefFunc: (doc: Body): string => {
+					return '/bodymood/' + doc._id;
+				},
+			},
+		{
+			icon: 'bedtime',
+			hrefFunc: (doc: Body): string => {
+				return '/bodysleep/' + doc._id;
+			},
+		},
+		{
+			icon: 'flag',
+			hrefFunc: (doc: Body): string => {
+				return '/bodytarget/' + doc._id;
+			},
+		},
+		{
+			icon: 'self_improvement',
+			hrefFunc: (doc: Body): string => {
+				return '/bodystress/' + doc._id;
+			},
+		},
+		{
+			icon: 'monitor_weight',
+			hrefFunc: (doc: Body): string => {
+				return '/bodyweight/' + doc._id;
+			},
+		},
+			{
 				icon: 'cloud_download',
 				click: (doc: Body): void => {
 					this._form.modalUnique<Body>('body', 'url', doc);

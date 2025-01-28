@@ -7,6 +7,10 @@ const routes: Routes = [
 	{
 		path: '',
 		component: BodyhabitComponent
+	},
+	{
+		path: ':body_id',
+		component: BodyhabitComponent
 	}
 ];
 

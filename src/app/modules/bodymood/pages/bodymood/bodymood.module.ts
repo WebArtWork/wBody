@@ -7,6 +7,10 @@ const routes: Routes = [
 	{
 		path: '',
 		component: BodymoodComponent
+	},
+	{
+		path: ':body_id',
+		component: BodymoodComponent
 	}
 ];
 

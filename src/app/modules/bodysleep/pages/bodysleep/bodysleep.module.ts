@@ -7,6 +7,10 @@ const routes: Routes = [
 	{
 		path: '',
 		component: BodysleepComponent
+	},
+	{
+		path: ':body_id',
+		component: BodysleepComponent
 	}
 ];
 
