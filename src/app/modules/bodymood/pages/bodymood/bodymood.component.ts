@@ -7,6 +7,7 @@ import { TranslateService } from 'src/app/core/modules/translate/translate.servi
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
 import { bodymoodFormComponents } from '../../formcomponents/bodymood.formcomponents';
 import { firstValueFrom } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
 	templateUrl: './bodymood.component.html',
@@ -92,14 +93,23 @@ export class BodymoodComponent {
 
 	rows: Bodymood[] = [];
 
+	body_id = '';
+
 	constructor(
 		private _translate: TranslateService,
 		private _bodymoodService: BodymoodService,
 		private _alert: AlertService,
 		private _form: FormService,
-		private _core: CoreService
+		private _core: CoreService,
+		private _router: Router,
+		private _route: ActivatedRoute
 	) {
 		this.setRows();
+		this._route.paramMap.subscribe(params => {
+
+			this.body_id = params.get('body_id') || '';
+			console.log (this.body_id);
+		})
 	}
 
 	setRows(page = this._page): void {
@@ -108,7 +118,7 @@ export class BodymoodComponent {
 		this._core.afterWhile(
 			this,
 			() => {
-				this._bodymoodService.get({ page }).subscribe((rows) => {
+				this._bodymoodService.get({ page, query: this._query() }).subscribe((rows) => {
 					this.rows.splice(0, this.rows.length);
 
 					this.rows.push(...rows);
@@ -173,6 +183,18 @@ export class BodymoodComponent {
 	}
 
 	private _preCreate(bodymood: Bodymood): void {
-		delete bodymood.__created;
+		bodymood.__created= false;
+
+		if(this.body_id) {
+			bodymood.body = this.body_id;
+		}
+	}
+	
+	private _query(): string{
+		let query = '';
+		if (this.body_id) {
+			query +=(query?'&' : '') +'body=' + this.body_id;
+		}
+		return '';
 	}
 }

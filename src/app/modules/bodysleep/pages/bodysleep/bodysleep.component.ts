@@ -7,6 +7,7 @@ import { TranslateService } from 'src/app/core/modules/translate/translate.servi
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
 import { bodysleepFormComponents } from '../../formcomponents/bodysleep.formcomponents';
 import { firstValueFrom } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
 	templateUrl: './bodysleep.component.html',
@@ -92,14 +93,23 @@ export class BodysleepComponent {
 
 	rows: Bodysleep[] = [];
 
+	body_id = '';
+
 	constructor(
 		private _translate: TranslateService,
 		private _bodysleepService: BodysleepService,
 		private _alert: AlertService,
 		private _form: FormService,
-		private _core: CoreService
+		private _core: CoreService,
+		private _router: Router,
+		private _route: ActivatedRoute
 	) {
 		this.setRows();
+		this._route.paramMap.subscribe(params => {
+
+			this.body_id = params.get('body_id') || '';
+			console.log (this.body_id);
+		})
 	}
 
 	setRows(page = this._page): void {
@@ -108,7 +118,7 @@ export class BodysleepComponent {
 		this._core.afterWhile(
 			this,
 			() => {
-				this._bodysleepService.get({ page }).subscribe((rows) => {
+				this._bodysleepService.get({ page, query: this._query() }).subscribe((rows) => {
 					this.rows.splice(0, this.rows.length);
 
 					this.rows.push(...rows);
@@ -173,6 +183,18 @@ export class BodysleepComponent {
 	}
 
 	private _preCreate(bodysleep: Bodysleep): void {
-		delete bodysleep.__created;
+		 bodysleep.__created = false;
+
+		 if(this.body_id) {
+			bodysleep.body = this.body_id;
+		}
+	}
+	
+	private _query(): string{
+		let query = '';
+		if (this.body_id) {
+			query +=(query?'&' : '') +'body=' + this.body_id;
+		}
+		return '';
 	}
 }

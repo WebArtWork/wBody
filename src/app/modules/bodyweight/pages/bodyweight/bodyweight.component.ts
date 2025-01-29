@@ -7,6 +7,7 @@ import { TranslateService } from 'src/app/core/modules/translate/translate.servi
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
 import { bodyweightFormComponents } from '../../formcomponents/bodyweight.formcomponents';
 import { firstValueFrom } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
 	templateUrl: './bodyweight.component.html',
@@ -92,14 +93,24 @@ export class BodyweightComponent {
 
 	rows: Bodyweight[] = [];
 
+	body_id = '';
+
 	constructor(
 		private _translate: TranslateService,
 		private _bodyweightService: BodyweightService,
 		private _alert: AlertService,
 		private _form: FormService,
-		private _core: CoreService
+		private _core: CoreService,
+		private _router: Router,
+		private _route: ActivatedRoute
 	) {
 		this.setRows();
+
+		this._route.paramMap.subscribe(params => {
+
+			this.body_id = params.get('body_id') || '';
+			console.log (this.body_id);
+		})
 	}
 
 	setRows(page = this._page): void {
@@ -108,7 +119,7 @@ export class BodyweightComponent {
 		this._core.afterWhile(
 			this,
 			() => {
-				this._bodyweightService.get({ page }).subscribe((rows) => {
+				this._bodyweightService.get({ page, query: this._query() }).subscribe((rows) => {
 					this.rows.splice(0, this.rows.length);
 
 					this.rows.push(...rows);
@@ -173,6 +184,18 @@ export class BodyweightComponent {
 	}
 
 	private _preCreate(bodyweight: Bodyweight): void {
-		delete bodyweight.__created;
+		bodyweight.__created = false;
+
+		if(this.body_id) {
+			bodyweight.body = this.body_id;
+		}
+	}
+	
+	private _query(): string{
+		let query = '';
+		if (this.body_id) {
+			query +=(query?'&' : '') +'body=' + this.body_id;
+		}
+		return '';
 	}
 }
