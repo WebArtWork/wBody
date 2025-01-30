@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './admin-pages.component.scss'
 })
 export class AdminPagesComponent {
-
+  isMenuOpen=false;
 }

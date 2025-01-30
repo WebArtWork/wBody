@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './body-profile.component.scss'
 })
 export class BodyProfileComponent {
-
+  isMenuOpen=false;
 }
