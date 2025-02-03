@@ -12,6 +12,9 @@ import {
 	providedIn: 'root',
 })
 export class BodyService extends CrudService<Body> {
+	body: Body[] = this.getDocs();
+	bodyByAuthor: Record<string, Body[]> = {};
+
 	constructor(
 		_http: HttpService,
 		_store: StoreService,
@@ -27,5 +30,9 @@ export class BodyService extends CrudService<Body> {
 			_alert,
 			_core
 		);
+		this.get();
+
+		this.filteredDocuments(this.bodyByAuthor);
+		
 	}
 }

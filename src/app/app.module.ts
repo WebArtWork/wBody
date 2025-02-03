@@ -65,6 +65,16 @@ const routes: Routes = [
 		children: [
 			/* user */
 			{
+				path: 'myprofile',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Myprofile'
+					}
+				},
+				loadChildren: () => import('./pages/user/myprofile/myprofile.module').then(m => m.MyprofileModule)
+			}, 
+			{
 				path: 'bodytarget',
 				canActivate: [MetaGuard],
 				data: {
@@ -166,7 +176,48 @@ const routes: Routes = [
 					import('./pages/user/profile/profile.module').then(
 						(m) => m.ProfileModule
 					)
-			}
+			},
+			{
+				path: 'bodies',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Bodies'
+					}
+				},
+				loadChildren: () =>
+					import('./pages/user/bodies/bodies.module').then(
+						(m) => m.BodiesModule
+					)
+			},
+			{
+				path: 'body-profile',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Bodyprofile'
+					}
+				},
+				loadChildren: () =>
+					import('./pages/user/body-profile/body-profile.module').then(
+						(m) => m.BodyProfileModule
+			
+					)
+			},
+			{
+				path: 'create-body',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Createbody'
+					}
+				},
+				loadChildren: () =>
+					import('./pages/user/create-body/create-body.module').then(
+						(m) => m.CreateBodyModule
+					)
+			},
+			
 		]
 	},
 	{
