@@ -11,28 +11,6 @@
 					<span class="material-icons">group</span>
 				</a>
 			</li>
-			<li class="nav__li">
-				<a
-					[routerLinkActiveOptions]="{ exact: true }"
-					routerLinkActive="_activeLink"
-					routerLink="/create-body"
-					class="nav__a"
-					(click)="hideSidebar()"
-				>
-					<span class="material-icons">add_circle_outline</span>
-				</a>
-			</li>
-			<li class="nav__li">
-				<a
-					[routerLinkActiveOptions]="{ exact: true }"
-					routerLinkActive="_activeLink"
-					routerLink="/body-profile"
-					class="nav__a"
-					(click)="hideSidebar()"
-				>
-					<span class="material-icons">account_circle</span>
-				</a>
-			</li>
 			<li class="nav__li _burger" (click)="showSidebar = !showSidebar">
 				<a class="nav__toggle" [class._active]="showSidebar">
 					<span class="nav__toggle-line"></span>

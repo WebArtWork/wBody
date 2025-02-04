@@ -4,9 +4,9 @@ import { MyprofileComponent } from './myprofile.component';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-	
+
 	{
-		path: 'myprofile_id',
+		path: ':myprofile_id',
 		component: MyprofileComponent
 	}
 ];

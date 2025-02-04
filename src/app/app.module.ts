@@ -14,9 +14,9 @@ import { AuthenticatedGuard } from './core/guards/authenticated.guard';
 import { GuestGuard } from './core/guards/guest.guard';
 import { AdminsGuard } from './core/guards/admins.guard';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { CreateBodyComponent } from './pages/user/create-body/create-body.component';
-import { BodyProfileComponent } from './pages/user/body-profile/body-profile.component';
-import { AdminPagesComponent } from './pages/user/admin-pages/admin-pages.component';
+import { CreatebodyComponent } from './pages/user/createbody/createbody.component';
+import { BodyprofileComponent } from './pages/user/bodyprofile/bodyprofile.component';
+import { AdminPagesComponent } from './pages/user/adminpages/adminpages.component';
 
 const routes: Routes = [
 	{
@@ -191,7 +191,7 @@ const routes: Routes = [
 					)
 			},
 			{
-				path: 'body-profile',
+				path: 'bodyprofile',
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
@@ -199,13 +199,12 @@ const routes: Routes = [
 					}
 				},
 				loadChildren: () =>
-					import('./pages/user/body-profile/body-profile.module').then(
-						(m) => m.BodyProfileModule
-			
+					import('./pages/user/bodyprofile/bodyprofile.module').then(
+						(m) => m.BodyprofilesModule
 					)
 			},
 			{
-				path: 'create-body',
+				path: 'createbody',
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
@@ -213,8 +212,8 @@ const routes: Routes = [
 					}
 				},
 				loadChildren: () =>
-					import('./pages/user/create-body/create-body.module').then(
-						(m) => m.CreateBodyModule
+					import('./pages/user/createbody/createbody.module').then(
+						(m) => m.CreatebodyModule
 					)
 			},
 			
@@ -275,7 +274,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	declarations: [AppComponent, GuestComponent, UserComponent, CreateBodyComponent, BodyProfileComponent, AdminPagesComponent],
+	declarations: [AppComponent, GuestComponent, UserComponent],
 	imports: [
 		CoreModule,
 		BrowserModule,

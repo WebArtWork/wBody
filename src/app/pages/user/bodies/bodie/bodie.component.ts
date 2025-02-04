@@ -8,5 +8,5 @@ import { Body } from 'src/app/modules/body/interfaces/body.interface';
   styleUrl: './bodie.component.scss'
 })
 export class BodieComponent {
-  @Input() Bodie: Body;
+  @Input() bodie: Body;
 }

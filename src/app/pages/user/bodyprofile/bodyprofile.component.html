@@ -19,9 +19,14 @@
             </div>
             <div class="documents-main">
                 <div class="documents-main-content">
-                    <div  class="documents-main-row">
-                        <p>menu works!</p>
-                    </div>
+                    <div
+      *ngFor="let bodyprofiles of bodyprofile"
+      class="documents-main-row"
+     >
+      <a routerLink="/myprofile/{{bodyprofiles._id}}">
+       <app-bodyprofiles [bodyprofiles]="bodyprofiles"></app-bodyprofiles>
+      </a>
+     </div>
                 </div>
             </div>
   
