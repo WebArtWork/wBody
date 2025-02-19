@@ -10,5 +10,6 @@ export interface Body extends CrudDocument {
 	target: string;
 	weight: string;
 	body: string;
-	description: string;
+	name: string;        
+	description: string; 
 }

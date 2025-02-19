@@ -1,1 +1,6 @@
-<p>bodie works!</p>
+<a routerLink="/myprofile/{{bodie._id}}">
+	<div class="documents__title">{{bodie.name}}</div>
+	<div class="documents__description">{{bodie.description}}</div>
+</a>
+<span (click)="update(bodie)" class="material-icons">edit</span>
+<span (click)="delete(bodie)" class="material-icons">delete</span>
