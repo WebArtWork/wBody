@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">wBody</string>
+    <string name="title_activity_main">wBody</string>
+    <string name="package_name">wbody.webart.work</string>
+    <string name="custom_url_scheme">wbody.webart.work</string>
+</resources>
